@@ -1,7 +1,10 @@
 // prompts will show up when asking user whether they want the following characters to be 
 var numChoice;
+
 var specCharChoice;
+
 var upCaseChoice;
+
 var lowCaseChoice;
 
 // this is the number array for the password generator
@@ -16,8 +19,19 @@ var upCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "
 function generatePassword() {
   var length = prompt
     ("Pick a length for your password");
-
-
+// makes sure that user inputs the right characters
+      var length = userInput;
+      if (!userInput) {
+        alert("Input is needed");
+        return;
+      } else if (isNaN(length)) {
+        alert("Must input number value");
+        return;
+      } else if (length < 8 || length > 128) {
+        alert("Must be between 8 and 128");
+        return
+      } else if (length >= 8 && length <= 128) {
+        
   // Assignment Code
   var generateBtn = document.querySelector("#generate");
 
@@ -28,7 +42,8 @@ function generatePassword() {
 
     passwordText.value = password;
 
-  }
+
+
 
   // Add event listener to generate button
   generateBtn.addEventListener("click", writePassword);
