@@ -1,3 +1,5 @@
+ // Assignment Code
+var generateBtn = document.querySelector("#generate");
 // prompts will show up when asking user whether they want the following characters to be 
 var numChoice;
 
@@ -31,8 +33,8 @@ function generatePassword() {
     alert("Password must be between 8 and 128 characters");
     return
 
-  //once user inputs correct values, the prompts will then begin to ask the user which characters they would want to be a part of their generated passcode
-  
+    //once user inputs correct values, the prompts will then begin to ask the user which characters they would want to be a part of their generated passcode
+
   } else if (length >= 8 && length <= 128) {
     numChoice = window.confirm("Did you want the password to contain numbers?");
     lowCaseChoice = window.confirm(
@@ -44,9 +46,33 @@ function generatePassword() {
     specCharChoice = window.confirm(
       "Did you want the password to contain special characters?"
     );
+    //&& returns if both operands are true and ! inverts a boolean expression
+    if (
+      !numChoice &&
+      !lowCaseChoice &&
+      !upCaseChoice &&
+      !specCharChoice
+    ) {
+      alert("Inputs are required for password generation");
+      return
+    }
 
-    // Assignment Code
-    var generateBtn = document.querySelector("#generate");
+// concat will join multiple strings between characters
+    var userChoices = [];
+  if (numChoice) {
+    userChoices = userChoices.concat(numbers);
+  }
+  if (lowCaseChoice) {
+    userChoices = userChoices.concat(lowCaseLetters);
+  }
+  if (upCaseChoice) {
+    userChoices = userChoices.concat(upperCaseLetters);
+  }
+  if (specCharChoice) {
+    userChoices = userChoices.concat(specialCharacters);
+  }
+
+
 
     // Write password to the #password input
     function writePassword() {
