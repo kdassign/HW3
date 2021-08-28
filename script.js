@@ -1,3 +1,11 @@
+
+// this is the number array for the password generator
+var numChar = [0,1,2,3,4,5,6,7,8,9];
+// this is the array so that special characters can be included in generated passwords
+var specChar = ["!", "@", "#", "$", "%", "^", "&", "*", "?", "-", "+"];
+
+
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
