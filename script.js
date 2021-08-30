@@ -1,4 +1,4 @@
- // Assignment Code
+// Assignment Code
 var generateBtn = document.querySelector("#generate");
 // prompts will show up when asking user whether they want the following characters to be 
 var numChoice;
@@ -17,6 +17,19 @@ var specChar = ["!", "@", "#", "$", "%", "^", "&", "*", "?", "-", "+"];
 var lowCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 // this is the array for upper case characters
 var upCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}
+
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
   var theInput = prompt
@@ -57,43 +70,27 @@ function generatePassword() {
       return
     }
 
-// concat will join multiple strings between characters
+    // concat will join multiple strings between characters
     var userChoices = [];
-  if (numChoice) {
-    userChoices = userChoices.concat(numChar);
-  }
-  if (lowCaseChoice) {
-    userChoices = userChoices.concat(lowCase);
-  }
-  if (upCaseChoice) {
-    userChoices = userChoices.concat(upCase);
-  }
-  if (specCharChoice) {
-    userChoices = userChoices.concat(specChar);
-  }
-// Generates the random password after user inputs choices
-  var newPassword = [];
-  for (var i = 0; i < length; i++) {
-    newPassword.push(
-      userChoices[Math.floor(Math.random() * userChoices.length)]
-    );
-  }
-  return newPassword.join('')
-}
-}
-
-
-    // Write password to the #password input
-    function writePassword() {
-      var password = generatePassword();
-      var passwordText = document.querySelector("#password");
-
-      passwordText.value = password;
+    if (numChoice) {
+      userChoices = userChoices.concat(numChar);
     }
-
-
-
-
-
-      // Add event listener to generate button
-      generateBtn.addEventListener("click", writePassword);
+    if (lowCaseChoice) {
+      userChoices = userChoices.concat(lowCase);
+    }
+    if (upCaseChoice) {
+      userChoices = userChoices.concat(upCase);
+    }
+    if (specCharChoice) {
+      userChoices = userChoices.concat(specChar);
+    }
+    // Generates the random password after user inputs choices
+    var newPassword = [];
+    for (var i = 0; i < length; i++) {
+      newPassword.push(
+        userChoices[Math.floor(Math.random() * userChoices.length)]
+      );
+    }
+    return newPassword.join('')
+  }
+}
