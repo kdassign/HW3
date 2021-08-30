@@ -19,11 +19,11 @@ var lowCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
 var upCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 function generatePassword() {
-  var length = prompt
+  var theInput = prompt
     ("Pick a length for your password");
   // makes sure that user inputs the right characters
-  var length = userInput;
-  if (!userInput) {
+  var length = theInput;
+  if (!theInput) {
     alert("Input is needed");
     return;
   } else if (isNaN(length)) {
@@ -53,25 +53,34 @@ function generatePassword() {
       !upCaseChoice &&
       !specCharChoice
     ) {
-      alert("Inputs are required for password generation");
+      alert("Generator requires inputs");
       return
     }
 
 // concat will join multiple strings between characters
     var userChoices = [];
   if (numChoice) {
-    userChoices = userChoices.concat(numbers);
+    userChoices = userChoices.concat(numChar);
   }
   if (lowCaseChoice) {
-    userChoices = userChoices.concat(lowCaseLetters);
+    userChoices = userChoices.concat(lowCase);
   }
   if (upCaseChoice) {
-    userChoices = userChoices.concat(upperCaseLetters);
+    userChoices = userChoices.concat(upCase);
   }
   if (specCharChoice) {
-    userChoices = userChoices.concat(specialCharacters);
+    userChoices = userChoices.concat(specChar);
   }
-
+// Generates the random password after user inputs choices
+  var newPassword = [];
+  for (var i = 0; i < length; i++) {
+    newPassword.push(
+      userChoices[Math.floor(Math.random() * userChoices.length)]
+    );
+  }
+  return newPassword.join('')
+}
+}
 
 
     // Write password to the #password input
@@ -80,6 +89,8 @@ function generatePassword() {
       var passwordText = document.querySelector("#password");
 
       passwordText.value = password;
+    }
+
 
 
 
